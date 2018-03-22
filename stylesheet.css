@@ -4,4 +4,29 @@ body {
 
 h1 {
   color: #143642;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  font-size: 40px;
+  font-variant: small-caps;
+  margin-bottom: 0px;
+}
+
+h2 {
+ color: #9FB8AD;
+ text-align: center;
+ font-family: "Times New Roman", Times, serif;
+ text-transform: uppercase;
+ font-size: 20px;
+ margin-top: 5px;
+}
+
+#container {
+  width: 50%;
+  min-width: 800px;
+  background-color: white;
+  padding: 20px 20px 20px 20px;
+  margin: auto;
+  border-radius: 20px;
+
+
 }
