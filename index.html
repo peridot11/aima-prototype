@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Ch.5. / Tic-tac-toe</title>
+  <title>Adversarial Search</title>
   <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
   <link rel="icon" type="image/png" href="titleicon.png"/>
 </head>
@@ -10,8 +10,90 @@
 <body>
 
   <div id=container>
-   <h1>Chapter 5.1 - Games</h1>
-   <h2>Optimal decisions in games - Tic-Tac-Toe</h2>
+    <h1>Chapter 5 - Adversarial Search</h1>
+      <hr width="600">
+    <h2>Optimal decisions in games - Tic-Tac-Toe</h2>
+      <p>To start, let's talk about what an optimal decision in a game is.
+      If you're playing to win, the moves you make are optimal decisions
+      if they guarantee that you win the game (or draw, if you're playing
+      against someone who's also making optimal moves).</p>
+      <p>We can use Tic-Tac-Toe as our example - this is a game that
+      can be played “perfectly”, ensuring that you never lose. Try
+      and see if you can win this game! </p>
+
+<!-- Tic tac toe goes here-->
+
+
+<!-- Tic tac toe end-->
+      <p>Did you win? Trick question - you can’t win. The computer you’re
+      playing against is programmed to always make optimal decisions, therefore
+      the best outcome you can hope to achieve is a draw. How does this work?</p>
+
+    <h2>Minimax Search</h2>
+      <p>Let’s think of the game as a tree - starting from the initial game
+      state, branching out and showing all potential future game states. For
+      tic-tac-toe this tree is relatively small -  it has fewer than 9! (= 362880)
+      terminal nodes. This is too large to illustrate from the initial game state,
+      so for the sake of this example, we’re looking at a specific branch
+      of the tree: </p>
+<!-- Tic tac toe example tree goes here-->
+
+
+<!--end-->
+      <p>As you can see, at this point in the game O stands no chance in winning,
+      the best outcome they can aim for is a draw. X however still has a shot at
+      victory - there are two outcomes in which X wins.</p>
+      <p>So how do we know what steps to take? We can’t predict the next movement
+      of our opponent, so the next best thing is to make sure that our opponent
+      has slimmer chances of winning. </p>
+      <p>This is where minimax search comes in. To demonstrate this,
+      let’s switch to a more trivial game. Here, our two players - Min and Max -
+      are trying to minimize/maximize (respectively) the number in the terminal
+      state. Max, instead of going for the node with the highest overall value,
+      goes for the node with the highest ‘minimum’ value. </p>
+<!-- Minimax search example tree goes here-->
+
+
+<!--end-->
+      <p>You can see in the visual that the algorithm proceeds all the way down
+      to the leaves of the tree, and then the minimax values are backed up
+      through the tree as the recursion unwinds. Since this is a backtracking
+      based algorithm, it tries all possible moves, then backtracks and makes a
+      decision. For non-trivial games, this is too time-consuming, but this
+      algorithm is the basis for many more complex ones.</p>
+
+    <h2>Alpha-Beta Pruning</h2>
+      <p>The minimax search algorithm examines parts of the tree that it
+      doesn’t have to. By ignoring branches that can’t possibly provide a
+      better outcome, we improve the original algorithm by cutting down it’s
+      runtime. The process of ignoring certain branches is called pruning, and
+      this algorithm is an example of alpha-beta pruning. </p>
+<!-- Alpha-Beta pruning example tree goes here-->
+
+
+<!--end-->
+      <p>So how effective is alpha-beta pruning? We can see that it’s
+      faster than minimax, but it’s also obvious that its effectiveness
+      depends on the order in which we visit each of the nodes. If we visit
+      them in the worst possible order, it’s possible that no pruning occurs,
+      and and our algorithm becomes no more effective than the original minimax
+      search. </p>
+
+      <p> You can compare the two algorithms below. Try entering different
+      numbers to get different results. Start thinking about how we could make
+      alpha-beta pruning even more efficient. </p>
+<!-- Comparison example tree goes here-->
+
+
+<!--end-->
+      <p>Look at the time taken for each algorithm to find the best route -
+      you can find the two extremes by entering this dataset in two different ways: </p>
+1, 2, 3, 4, 5, 6, 7, 8, 9
+(the two algorithms are equally fast)
+9, 8, 7, 6, 5, 4, 3, 2, 1
+(alpha-beta pruning is considerably faster)
+
+
   </div>
 
 
